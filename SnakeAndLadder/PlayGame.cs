@@ -24,15 +24,16 @@ namespace SnakeAndLadder
             //initialisng random class
             Random rand = new Random();
 
-            //Generating random number for diceRoll
-            diceRoll = rand.Next(1, 7);
-
-            //generating random for checking options
-            checkOption = rand.Next(1, 4);
+            
 
             //Console.WriteLine(checkOption);
-            while (playerPosition < winningPosition)
+            while (playerPosition <= winningPosition)
             {
+                //Generating random number for diceRoll
+                diceRoll = rand.Next(1, 7);
+
+                //generating random for checking options
+                checkOption = rand.Next(1, 4);
                 switch (checkOption)
                 {
                     case NO_PLAY:
