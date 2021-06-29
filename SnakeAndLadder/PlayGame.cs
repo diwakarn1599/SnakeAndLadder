@@ -20,11 +20,10 @@ namespace SnakeAndLadder
             //Console.WriteLine("Player position starts with "+ START_POSITION);
             int diceRoll,checkOption,playerPosition = START_POSITION;
             int winningPosition = 100;
+            int countDieRoll = 1;
 
             //initialisng random class
             Random rand = new Random();
-
-            
 
             //Console.WriteLine(checkOption);
             while (playerPosition < winningPosition)
@@ -35,31 +34,34 @@ namespace SnakeAndLadder
                 //generating random for checking options
                 checkOption = rand.Next(1, 4);
 
+                Console.WriteLine("Dice roll --> " + countDieRoll++);
                 switch (checkOption)
                 {
                     case NO_PLAY:
-                        //Console.WriteLine("No play --> Player position= " + playerPosition);
+                        Console.WriteLine("No play --> Player position= " + playerPosition);
                         break;
                     case LADDER:
                         playerPosition += diceRoll;
-                        //Console.WriteLine("Ladder --> Player position= " + playerPosition);
+                        Console.WriteLine("Ladder --> Player position= " + playerPosition);
                         break;
                     case SNAKE:
                         playerPosition = (playerPosition - diceRoll) < 0 ? 0 : (playerPosition - diceRoll);
-                        //Console.WriteLine("Snake --> Player position= " + playerPosition);
+                        Console.WriteLine("Snake --> Player position= " + playerPosition);
                         break;
                     default:
                         break;
                 }
-                if (playerPosition > winningPosition)
-                {
-                    playerPosition = playerPosition - diceRoll;
-                }
-                Console.WriteLine("Player position= "+ playerPosition);
+                
+                // condition to check whether player position be exactly 100
+                playerPosition = playerPosition > winningPosition ? (playerPosition - diceRoll) : playerPosition;
+
+                
+                //Console.WriteLine("Player position= "+ playerPosition);
             }
             
-            //Console.WriteLine("The player throws "+ diceRoll);
+            
             Console.WriteLine("Congratulations!!! You Won!!! \n  player Position =" + playerPosition);
+            Console.WriteLine("Total Dice Roll = " + --countDieRoll);
 
 
 
