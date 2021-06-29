@@ -19,6 +19,7 @@ namespace SnakeAndLadder
         {
             //Console.WriteLine("Player position starts with "+ START_POSITION);
             int diceRoll,checkOption,playerPosition = START_POSITION;
+            int winningPosition = 100;
 
             //initialisng random class
             Random rand = new Random();
@@ -30,22 +31,25 @@ namespace SnakeAndLadder
             checkOption = rand.Next(1, 4);
 
             //Console.WriteLine(checkOption);
-            switch (checkOption)
+            while (playerPosition < winningPosition)
             {
-                case NO_PLAY:
-                    break;
-                case LADDER:
-                    playerPosition += diceRoll;
-                    break;
-                case SNAKE:
-                    playerPosition = (playerPosition - diceRoll) < 0 ? 0 : (playerPosition - diceRoll);
-                    break;
-                default:
-                    break;
+                switch (checkOption)
+                {
+                    case NO_PLAY:
+                        break;
+                    case LADDER:
+                        playerPosition += diceRoll;
+                        break;
+                    case SNAKE:
+                        playerPosition = (playerPosition - diceRoll) < 0 ? 0 : (playerPosition - diceRoll);
+                        break;
+                    default:
+                        break;
+                }
             }
             
-            Console.WriteLine("The player throws "+ diceRoll);
-            Console.WriteLine("The player Position" + playerPosition);
+            //Console.WriteLine("The player throws "+ diceRoll);
+            Console.WriteLine("Congratulations!!! You Won!!! \n  player Position =" + playerPosition);
 
 
 
