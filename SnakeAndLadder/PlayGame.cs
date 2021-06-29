@@ -27,26 +27,35 @@ namespace SnakeAndLadder
             
 
             //Console.WriteLine(checkOption);
-            while (playerPosition <= winningPosition)
+            while (playerPosition < winningPosition)
             {
                 //Generating random number for diceRoll
                 diceRoll = rand.Next(1, 7);
 
                 //generating random for checking options
                 checkOption = rand.Next(1, 4);
+
                 switch (checkOption)
                 {
                     case NO_PLAY:
+                        //Console.WriteLine("No play --> Player position= " + playerPosition);
                         break;
                     case LADDER:
                         playerPosition += diceRoll;
+                        //Console.WriteLine("Ladder --> Player position= " + playerPosition);
                         break;
                     case SNAKE:
                         playerPosition = (playerPosition - diceRoll) < 0 ? 0 : (playerPosition - diceRoll);
+                        //Console.WriteLine("Snake --> Player position= " + playerPosition);
                         break;
                     default:
                         break;
                 }
+                if (playerPosition > winningPosition)
+                {
+                    playerPosition = playerPosition - diceRoll;
+                }
+                Console.WriteLine("Player position= "+ playerPosition);
             }
             
             //Console.WriteLine("The player throws "+ diceRoll);
